@@ -21,8 +21,6 @@ namespace WebApiTrain.DAL.Configurations
                 .WithOne(x => x.User)
                 .HasForeignKey(x => x.UserId)
                 .HasPrincipalKey(x => x.Id);
-
-            throw new NotImplementedException();
         }
     }
 }

@@ -24,7 +24,7 @@ namespace WebApiTrain.Api.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<BaseResult<ReportDto>>> GetReport(long id)
         {
-            var response = await _reportService.GetReportsAsync(id);
+            var response = await _reportService.GetReportByIdAsync(id);
             if (response.IsSuccess)
             {
                 return Ok(response);

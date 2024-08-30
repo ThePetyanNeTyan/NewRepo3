@@ -18,13 +18,13 @@ namespace WebApiTrain.DAL.DependencyInjection
     {
         public static void AddDataAccessLayer(this IServiceCollection services, IConfiguration configuration)
         {
-            var connectionString = configuration.GetConnectionString("MSSQL");
+            var connectionString = configuration.GetConnectionString("PostgresSQL");
 
             services.AddSingleton<DateInterceptor>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseSqlServer(connectionString);
+                options.UseNpgsql(connectionString);
             });
             services.InitRepositories();
         }
