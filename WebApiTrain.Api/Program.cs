@@ -1,3 +1,5 @@
+using Serilog;
+using WebApiTrain.Application.DependencyInjection;
 using WebApiTrain.DAL.DependencyInjection;
 
 namespace WebApiTrain.Api
@@ -15,7 +17,10 @@ namespace WebApiTrain.Api
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Host.UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration));
+
             builder.Services.AddDataAccessLayer(builder.Configuration);
+            builder.Services.AddApplication();
 
             var app = builder.Build();
 
