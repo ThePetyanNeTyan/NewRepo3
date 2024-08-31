@@ -51,7 +51,8 @@ namespace WebApiTrain.Application.Services
                 {
                     Name = dto.Name,
                     Description = dto.Description,
-                    UserId = user.Id
+                    UserId = user.Id,
+                    CreatedAt = DateTime.UtcNow
                 };
                 await _reportRepository.CreateAsync(report);
                 return new BaseResult<ReportDto>()
@@ -198,6 +199,7 @@ namespace WebApiTrain.Application.Services
 
                 report.Name = dto.Name;
                 report.Description = dto.Description;
+                report.UpdatedAt = DateTime.UtcNow;
 
                 await _reportRepository.UpdateAsync(report);
 
