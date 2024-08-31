@@ -16,14 +16,14 @@ namespace WebApiTrain.DAL.Repositories
             _dbcontext = dbcontext;
         }
 
-        public async Task<TEntity> CreateAsync(TEntity entity)
+        public Task<TEntity> CreateAsync(TEntity entity)
         {
             if (entity == null) throw new ArgumentNullException("Entity is null");
 
-            await _dbcontext.AddAsync(entity);
+            _dbcontext.Add(entity);
             _dbcontext.SaveChanges();
 
-            return entity;
+            return Task.FromResult(entity);
         }
 
         public IQueryable<TEntity> GetAll()

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Asp.Versioning;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApiTrain.Domain.Dto.Report;
 using WebApiTrain.Domain.Entity;
@@ -7,9 +8,10 @@ using WebApiTrain.Domain.Result;
 
 namespace WebApiTrain.Api.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [ApiController]
-    [Route("api/v1/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class ReportController : ControllerBase
     {
 

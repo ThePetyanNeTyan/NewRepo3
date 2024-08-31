@@ -14,8 +14,8 @@ namespace WebApiTrain.Api
             builder.Services.AddSerilog();
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+
+            builder.Services.AddSwagger();
 
             builder.Host.UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration));
 
@@ -28,7 +28,11 @@ namespace WebApiTrain.Api
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
-                app.UseSwaggerUI();
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApiTrain Swagger V 1.0");
+                    c.SwaggerEndpoint("/swagger/v2/swagger.json", "WebApiTrain Swagger V 2.0");
+                });
             }
 
             app.UseHttpsRedirection();

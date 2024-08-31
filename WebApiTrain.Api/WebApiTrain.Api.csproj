@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.1.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
     <PackageReference Include="Serilog.AspNetCore" Version="8.0.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
@@ -18,6 +19,10 @@
     <ProjectReference Include="..\WebApiTrain.Application\WebApiTrain.Application.csproj" />
     <ProjectReference Include="..\WebApiTrain.DAL\WebApiTrain.DAL.csproj" />
     <ProjectReference Include="..\WebApiTrain.Domain\WebApiTrain.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Startup\" />
   </ItemGroup>
 
 </Project>
