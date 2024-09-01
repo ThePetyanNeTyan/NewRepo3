@@ -1,5 +1,6 @@
 ﻿using Asp.Versioning;
 using Microsoft.OpenApi.Models;
+using System.Reflection;
 
 namespace WebApiTrain.Api
 {
@@ -75,6 +76,8 @@ namespace WebApiTrain.Api
                         Array.Empty<string>()
                     }
                 });
+                var xmlFileName = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFileName));
             });
         }
     }
